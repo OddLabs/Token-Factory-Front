@@ -70,56 +70,67 @@ function TokenForm() {
   };
 
   return (
-    <Box >
-      <h1>Token Factory</h1>
-      <form onSubmit={handleSubmit}>
-      <div>
-      <FormControl >
-        <InputLabel htmlFor="tokenName">Token Name</InputLabel>
-        <Input id="tokenName" aria-describedby="my-helper-text"
-                    value={tokenName}
-                    onChange={(e) => setTokenName(e.target.value)} />
-        <FormHelperText id="my-helper-text">Write token name here</FormHelperText>
-      </FormControl>
+    <Box
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    minHeight="100vh" 
+    >
+      <Box
+              p={2}
+              borderRadius={1}
+              width="90%">
+        <h1>Token Factory</h1>
+        <form onSubmit={handleSubmit}>
+        <div>
+        <FormControl >
+          <InputLabel htmlFor="tokenName">Token Name</InputLabel>
+          <Input id="tokenName" aria-describedby="my-helper-text"
+                      value={tokenName}
+                      onChange={(e) => setTokenName(e.target.value)} />
+          <FormHelperText id="my-helper-text">Write token name here</FormHelperText>
+        </FormControl>
 
-      <FormControl >
-        <InputLabel htmlFor="tokenSymbol">Token Symbol</InputLabel>
-        <Input id="tokenSymbol" aria-describedby="my-helper-text"
-                    value={tokenSymbol}
-                    onChange={(e) => setTokenSymbol(e.target.value)} />
-        <FormHelperText id="my-helper-text">Write token symbol here</FormHelperText>
-      </FormControl>
-      </div>
-      <div>
-      <FormControl >
-        <InputLabel htmlFor="initialSupply">Initial Supply</InputLabel>
-        <Input id="initialSupply" aria-describedby="my-helper-text"
-                    value={initialSupply}
-                    onChange={(e) => setInitialSupply(e.target.value)} />
-        <FormHelperText id="my-helper-text">Write initial supply here</FormHelperText>
-      </FormControl>
-      </div>
-      <div>
-      <LoadingButton
-          size="small"
-          type="submit"
-          loading={loading}
-          variant="outlined"
-          disabled={disabledButton}
-        >
-          <span>Create Token</span>
-        </LoadingButton>
-      </div>
-      <div>
-      {message && 
-        <Alert variant='outlined' severity={messageSeverity}>
-          {message}
-          {transactionHash && <p>Transaction Hash: {transactionHash}</p>}
-          {contractAddress && <p>Token Contract Address: {contractAddress}</p>}
-        </Alert>
-      }
-      </div>
-      </form>
+        <FormControl >
+          <InputLabel htmlFor="tokenSymbol">Token Symbol</InputLabel>
+          <Input id="tokenSymbol" aria-describedby="my-helper-text"
+                      value={tokenSymbol}
+                      onChange={(e) => setTokenSymbol(e.target.value)} />
+          <FormHelperText id="my-helper-text">Write token symbol here</FormHelperText>
+        </FormControl>
+        </div>
+        <div>
+        <FormControl >
+          <InputLabel htmlFor="initialSupply">Initial Supply</InputLabel>
+          <Input id="initialSupply" aria-describedby="my-helper-text"
+                      value={initialSupply}
+                      onChange={(e) => setInitialSupply(e.target.value)} />
+          <FormHelperText id="my-helper-text">Write initial supply here</FormHelperText>
+        </FormControl>
+        </div>
+        <div>
+        <LoadingButton
+            size="small"
+            type="submit"
+            loading={loading}
+            variant="outlined"
+            disabled={disabledButton}
+            sx = {{ marginTop: 2 }}
+          >
+            <span>Create Token</span>
+          </LoadingButton>
+        </div>
+        <div>
+        {message && 
+          <Alert variant='outlined' severity={messageSeverity} sx={{ marginTop: 2 }}>
+            {message}
+            {transactionHash && <p>Transaction Hash: {transactionHash}</p>}
+            {contractAddress && <p>Token Contract Address: {contractAddress}</p>}
+          </Alert>
+        }
+        </div>
+        </form>
+      </Box>
     </Box>
   );
 }
