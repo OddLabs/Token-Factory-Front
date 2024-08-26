@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route } from "react-router-dom"
 import Web3 from 'web3';
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import TokenForm from './pages/TokenForm';
-import Header from './components/Header';
 
 
-function App() {
+function Header() {
   const [account, setAccount] = useState('');
 
   useEffect(() => {
@@ -35,16 +29,11 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
-    <Routes>
-      <Route path="/" element={ <Home/> } />
-      <Route path="/create-token" element={ <TokenForm/> } />
-      <Route path="about" element={ <About/> } />
-      <Route path="contact" element={ <Contact/> } />
-    </Routes>
-  </div>
+    <div className="Header">
+      <h1>Odd Labs</h1>
+      <p>Connected Account: {account}</p>
+    </div>
   );
 }
 
-export default App;
+export default Header;
