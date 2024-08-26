@@ -14,7 +14,6 @@ import Brightness2Icon from '@mui/icons-material/Brightness2';
 import Wallet from './Wallet';
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

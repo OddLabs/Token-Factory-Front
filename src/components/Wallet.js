@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Box from '@mui/material/Box';
-import WalletIcon from '@mui/icons-material/Wallet';
 
 
 function Wallet() {
