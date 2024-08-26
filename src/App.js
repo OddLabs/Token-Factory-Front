@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import TokenForm from './pages/TokenForm';
-import Header from './components/Header';
+import ResponsiveAppBar from './components/ResponsiveAppBar';
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <ResponsiveAppBar />
     <Routes>
       <Route path="/" element={ <Home/> } />
       <Route path="/create-token" element={ <TokenForm/> } />

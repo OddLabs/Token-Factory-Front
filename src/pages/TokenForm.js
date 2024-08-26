@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Web3 from 'web3';
 import { tokenFactoryABI, tokenFactoryAddress } from '../config/TokenFactoryConfig';
+import { FormControl, Button, Box, FormHelperText, Input, InputLabel, Alert, CircularProgress } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
+
 
 function TokenForm() {
   const [tokenName, setTokenName] = useState('');
@@ -9,11 +12,16 @@ function TokenForm() {
   const [message, setMessage] = useState('');
   const [contractAddress, setContractAddress] = useState('');
   const [transactionHash, setTransactionHash] = useState('');
+  const [messageSeverity, setMessageSeverity] = useState('success');
+  const [loading, setLoading] = useState(false); 
+  const [disabledButton, setDisabledButton] = useState(false);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      setLoading(true);
       if (!window.ethereum) {
         setMessage('MetaMask not detected');
         return;
@@ -33,24 +41,28 @@ function TokenForm() {
         .on('transactionHash', function(hash) {
           setTransactionHash(hash);
           setMessage('Transaction sent, waiting for confirmation...');
+          setMessageSeverity('info')
         })
         .on('receipt', function(receipt) {
           const event = receipt.events.TokenCreated;
           if (event && event.returnValues) {
             setContractAddress(event.returnValues[1]);
             setMessage('Token created successfully!');
+            setMessageSeverity('success');
           } else {
             setMessage('Token created, but could not retrieve the contract address.');
+            setMessageSeverity('warning');
           }
+          setLoading(false);
         })
         .on('error', function(error) {
           console.error(error);
           setMessage('Error creating token');
+          setMessageSeverity('error');
+          setLoading(false);
         });
 
-      setTokenName('');
-      setTokenSymbol('');
-      setInitialSupply('');
+        setDisabledButton(true);
     } catch (error) {
       console.error(error);
       setMessage('Error creating token');
@@ -58,45 +70,57 @@ function TokenForm() {
   };
 
   return (
-    <div>
-      <h2>Create Your Token</h2>
+    <Box >
+      <h1>Token Factory</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="tokenName">Token Name:</label>
-          <input
-            type="text"
-            id="tokenName"
-            value={tokenName}
-            onChange={(e) => setTokenName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="tokenSymbol">Token Symbol:</label>
-          <input
-            type="text"
-            id="tokenSymbol"
-            value={tokenSymbol}
-            onChange={(e) => setTokenSymbol(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="initialSupply">Initial Supply:</label>
-          <input
-            type="number"
-            id="initialSupply"
-            value={initialSupply}
-            onChange={(e) => setInitialSupply(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Create Token</button>
+      <div>
+      <FormControl >
+        <InputLabel htmlFor="tokenName">Token Name</InputLabel>
+        <Input id="tokenName" aria-describedby="my-helper-text"
+                    value={tokenName}
+                    onChange={(e) => setTokenName(e.target.value)} />
+        <FormHelperText id="my-helper-text">Write token name here</FormHelperText>
+      </FormControl>
+
+      <FormControl >
+        <InputLabel htmlFor="tokenSymbol">Token Symbol</InputLabel>
+        <Input id="tokenSymbol" aria-describedby="my-helper-text"
+                    value={tokenSymbol}
+                    onChange={(e) => setTokenSymbol(e.target.value)} />
+        <FormHelperText id="my-helper-text">Write token symbol here</FormHelperText>
+      </FormControl>
+      </div>
+      <div>
+      <FormControl >
+        <InputLabel htmlFor="initialSupply">Initial Supply</InputLabel>
+        <Input id="initialSupply" aria-describedby="my-helper-text"
+                    value={initialSupply}
+                    onChange={(e) => setInitialSupply(e.target.value)} />
+        <FormHelperText id="my-helper-text">Write initial supply here</FormHelperText>
+      </FormControl>
+      </div>
+      <div>
+      <LoadingButton
+          size="small"
+          type="submit"
+          loading={loading}
+          variant="outlined"
+          disabled={disabledButton}
+        >
+          <span>Create Token</span>
+        </LoadingButton>
+      </div>
+      <div>
+      {message && 
+        <Alert variant='outlined' severity={messageSeverity}>
+          {message}
+          {transactionHash && <p>Transaction Hash: {transactionHash}</p>}
+          {contractAddress && <p>Token Contract Address: {contractAddress}</p>}
+        </Alert>
+      }
+      </div>
       </form>
-      {message && <p>{message}</p>}
-      {transactionHash && <p>Transaction Hash: {transactionHash}</p>}
-      {contractAddress && <p>Contract Address: {contractAddress}</p>}
-    </div>
+    </Box>
   );
 }
 

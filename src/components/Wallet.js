@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
+import Box from '@mui/material/Box';
+import WalletIcon from '@mui/icons-material/Wallet';
 
 
-function Header() {
+function Wallet() {
   const [account, setAccount] = useState('');
 
   useEffect(() => {
@@ -29,11 +31,11 @@ function Header() {
   };
 
   return (
-    <div className="Header">
-      <h1>Odd Labs</h1>
-      <p>Connected Account: {account}</p>
-    </div>
+    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+        <p>Connected Account: {account}</p>
+        
+    </Box>
   );
 }
 
-export default Header;
+export default Wallet;
