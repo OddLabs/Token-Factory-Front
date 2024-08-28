@@ -28,6 +28,12 @@
                 "internalType": "address",
                 "name": "tokenAddress",
                 "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "tokenKind",
+                "type": "string"
             }
         ],
         "name": "TokenCreated",

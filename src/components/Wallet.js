@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Box from '@mui/material/Box';
-
+import Typography from '@mui/material/Typography';
+import '@fontsource/orbitron'; // Importando a fonte Orbitron
 
 function Wallet() {
   const [account, setAccount] = useState('');
@@ -30,9 +31,18 @@ function Wallet() {
   };
 
   return (
-    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-        <p>Connected Account: {account}</p>
-        
+    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
+      <Typography 
+        variant="body1" 
+        sx={{ 
+          fontFamily: 'Orbitron, sans-serif', 
+          color: '#00ff99',  // Cor neon para o texto
+          textShadow: '0 0 5px #00ff99',  // Efeito de sombra neon
+          marginLeft: 2,
+        }}
+      >
+        Connected Account: {account ? account : 'Not Connected'}
+      </Typography>
     </Box>
   );
 }
