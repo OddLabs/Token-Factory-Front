@@ -7,7 +7,7 @@ import Wallet from './Wallet';
 import logo from '../images/logo.webp';
 import '@fontsource/orbitron';
 
-const pages = [{ menuName: 'Home', route: '/' }, { menuName: 'ERC20 Genrerator', route: '/generate-erc20' }];
+const pages = [{ menuName: 'Home', route: '/' }, { menuName: 'ERC20 Generator', route: '/generate-erc20' }];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -27,90 +27,51 @@ function ResponsiveAppBar() {
   }
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#0a0f26', boxShadow: '0 0 10px #00ff99' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#0a0f26', boxShadow: '0 0 10px #00ff99', minHeight: 80 }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          {/* Logo for larger screens */}
-          <Box
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              mr: 1,
-              height: 80,
-              background: 'linear-gradient(135deg, #0a0f26 0%, #00ff99 100%)',
-              padding: '10px',
-              borderRadius: '8px',
-            }}
-          >
+        <Toolbar disableGutters sx={{ minHeight: 80, justifyContent: 'space-between' }}>
+          {/* Logo and OddLabs text together */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box
-              component="img"
-              src={logo} 
-              alt="OddLabs Logo"
               sx={{
-                height: '100%',
+                display: { xs: 'none', md: 'flex' },
+                mr: 1,
+                height: 80,
+                background: 'linear-gradient(135deg, #0a0f26 0%, #00ff99 100%)',
+                padding: '10px',
+                borderRadius: '8px',
               }}
-            />
-          </Box>
+            >
+              <Box
+                component="img"
+                src={logo} 
+                alt="OddLabs Logo"
+                sx={{
+                  height: '100%',
+                }}
+              />
+            </Box>
 
-          {/* Logo for smaller screens */}
-          <Box
-            sx={{
-              display: { xs: 'flex', md: 'none' },
-              mr: 1,
-              height: 60,
-              background: 'linear-gradient(135deg, #0a0f26 0%, #00ff99 100%)',
-              padding: '5px',
-              borderRadius: '8px',
-            }}
-          >
-            <Box
-              component="img"
-              src={logo}
-              alt="OddLabs Logo"
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
               sx={{
-                height: '100%',
+                fontFamily: 'Orbitron',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: '#00ff99',
+                textDecoration: 'none',
+                fontSize: { xs: '1rem', md: '1.5rem' }, // Tamanho da fonte ajustado
               }}
-            />
+            >
+              OddLabs
+            </Typography>
           </Box>
-
-          {/* OddLabs text */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Orbitron',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: '#00ff99',
-              textDecoration: 'none',
-            }}
-          >
-            OddLabs
-          </Typography>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'Orbitron',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: '#00ff99',
-              textDecoration: 'none',
-            }}
-          >
-            OddLabs
-          </Typography>
 
           {/* Menu for mobile devices */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
             <IconButton
               size="large"
               aria-label="menu"
@@ -154,7 +115,7 @@ function ResponsiveAppBar() {
           </Box>
 
           {/* Menu for larger screens */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Button 
                 key={page.menuName} 
@@ -168,7 +129,10 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Wallet />
+          {/* Wallet component displayed on all screen sizes */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Wallet />
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

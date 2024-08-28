@@ -31,7 +31,7 @@ function Wallet() {
   };
 
   return (
-    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
+    <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center', overflow: 'hidden', maxWidth: { xs: '200px', md: 'none' } }}>
       <Typography 
         variant="body1" 
         sx={{ 
@@ -39,9 +39,12 @@ function Wallet() {
           color: '#00ff99',  // Cor neon para o texto
           textShadow: '0 0 5px #00ff99',  // Efeito de sombra neon
           marginLeft: 2,
+          textOverflow: 'ellipsis', // Trunca o texto apenas se necessário
+          whiteSpace: 'nowrap', // Evita quebra de linha
+          overflow: 'hidden', // Oculta o excesso de texto
         }}
       >
-        Connected Account: {account ? account : 'Not Connected'}
+        Connected: {account ? `${account.substring(0, 6)}...${account.substring(account.length - 4)}` : 'Not Connected'}
       </Typography>
     </Box>
   );

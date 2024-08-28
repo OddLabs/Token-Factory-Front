@@ -80,9 +80,9 @@ function ERC20Form() {
     >
       <Paper elevation={6} sx={{ 
         display: 'flex', 
-        flexDirection: 'row', 
-        width: '80%', 
-        padding: 4, 
+        flexDirection: { xs: 'column', md: 'row' },  
+        width: { xs: '100%', md: '80%' },  
+        padding: { xs: 2, md: 4 },  
         borderRadius: 2,
         bgcolor: '#1a1a1a',
         boxShadow: '0 0 20px #00ff99',
@@ -93,7 +93,7 @@ function ERC20Form() {
           justifyContent="center"
           alignItems="center"
           gap="20px"
-          width="55%"
+          width={{ xs: '100%', md: '55%' }}  
         >
           <Typography 
             variant="h4" 
@@ -101,6 +101,7 @@ function ERC20Form() {
               fontFamily: 'Orbitron, sans-serif', 
               color: '#00ff99',
               textShadow: '0 0 10px #00ff99',
+              fontSize: { xs: '1.5rem', md: '2rem' },  
             }} 
             gutterBottom
           >
@@ -108,7 +109,7 @@ function ERC20Form() {
           </Typography>
           <form onSubmit={handleSubmit}>
             <FormControl fullWidth variant="outlined" margin="normal">
-              <InputLabel htmlFor="tokenName" sx={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff99' }}>
+              <InputLabel htmlFor="tokenName" sx={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff99', fontSize: { xs: '0.875rem', md: '1rem' } }}>
                 Token Name
               </InputLabel>
               <Input
@@ -126,16 +127,17 @@ function ERC20Form() {
                   },
                   '&::after': {
                     borderColor: '#00ff99'
-                  }
+                  },
+                  fontSize: { xs: '0.875rem', md: '1rem' }  
                 }}
               />
-              <FormHelperText sx={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff' }}>
+              <FormHelperText sx={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff', fontSize: { xs: '0.75rem', md: '0.875rem' } }}>
                 Write token name here
               </FormHelperText>
             </FormControl>
 
             <FormControl fullWidth variant="outlined" margin="normal">
-              <InputLabel htmlFor="tokenSymbol" sx={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff99' }}>
+              <InputLabel htmlFor="tokenSymbol" sx={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff99', fontSize: { xs: '0.875rem', md: '1rem' } }}>
                 Token Symbol
               </InputLabel>
               <Input
@@ -153,16 +155,17 @@ function ERC20Form() {
                   },
                   '&::after': {
                     borderColor: '#00ff99'
-                  }
+                  },
+                  fontSize: { xs: '0.875rem', md: '1rem' }  
                 }}
               />
-              <FormHelperText sx={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff' }}>
+              <FormHelperText sx={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff', fontSize: { xs: '0.75rem', md: '0.875rem' } }}>
                 Write token symbol here
               </FormHelperText>
             </FormControl>
             
             <FormControl fullWidth variant="outlined" margin="normal">
-              <InputLabel htmlFor="initialSupply" sx={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff99' }}>
+              <InputLabel htmlFor="initialSupply" sx={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff99', fontSize: { xs: '0.875rem', md: '1rem' } }}>
                 Initial Supply
               </InputLabel>
               <Input
@@ -180,10 +183,11 @@ function ERC20Form() {
                   },
                   '&::after': {
                     borderColor: '#00ff99'
-                  }
+                  },
+                  fontSize: { xs: '0.875rem', md: '1rem' }  
                 }}
               />
-              <FormHelperText sx={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff' }}>
+              <FormHelperText sx={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff', fontSize: { xs: '0.75rem', md: '0.875rem' } }}>
                 Write initial supply here
               </FormHelperText>
             </FormControl>
@@ -203,7 +207,8 @@ function ERC20Form() {
                 color: '#0a0f26',
                 '&:hover': {
                   bgcolor: '#00cc7a'
-                }
+                },
+                fontSize: { xs: '0.875rem', md: '1rem' }  
               }}
             >
               <span>Create Token</span>
@@ -218,7 +223,8 @@ function ERC20Form() {
                 sx={{ 
                   fontFamily: 'Orbitron, sans-serif',
                   bgcolor: messageSeverity === 'success' ? '#00ff99' : messageSeverity === 'error' ? '#ff4c4c' : '#ffaa00',
-                  color: '#0a0f26'
+                  color: '#0a0f26',
+                  fontSize: { xs: '0.75rem', md: '0.875rem' }  
                 }}
               >
                 {message}
@@ -230,11 +236,11 @@ function ERC20Form() {
         </Box>
 
         <Box
-          width="45%"
-          display="flex"
+          width={{ xs: '100%', md: '45%' }}  
+          display={{ xs: 'none', md: 'flex' }} 
           justifyContent="center"
           alignItems="center"
-          sx={{ marginLeft: 3, height: '100%', padding: '20px 0' }}
+          sx={{ marginLeft: { xs: 0, md: 3 }, marginTop: { xs: 3, md: 0 }, height: 'auto', padding: { xs: '10px', md: '20px 0' } }}
         >
           <img src={erc20FormSupportingImage} alt="Token Creation" style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '8px', filter: 'drop-shadow(0 0 10px #00ff99)' }} />
         </Box>
