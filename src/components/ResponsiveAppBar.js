@@ -2,15 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Button, AppBar, Toolbar, Typography, Menu, Container, Box } from '@mui/material/';
+import { Button, AppBar, Toolbar, Typography, Menu, MenuItem, Container, Box } from '@mui/material/';
 import Wallet from './Wallet';
 import logo from '../images/logo.webp';
 import '@fontsource/orbitron';
 
-const pages = [{ menuName: 'Home', route: '/' }, { menuName: 'ERC20 Generator', route: '/generate-erc20' }];
+const pages = [{ menuName: 'Home', route: '/' }];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElGenerators, setAnchorElGenerators] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -20,10 +21,20 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  const handleOpenGeneratorsMenu = (event) => {
+    setAnchorElGenerators(event.currentTarget);
+  };
+
+  const handleCloseGeneratorsMenu = () => {
+    setAnchorElGenerators(null);
+  };
+
   const navigate = useNavigate();
 
   const handleItemClick = (route) => {
     navigate(route);
+    handleCloseNavMenu();
+    handleCloseGeneratorsMenu();
   }
 
   return (
@@ -63,7 +74,7 @@ function ResponsiveAppBar() {
                 letterSpacing: '.3rem',
                 color: '#00ff99',
                 textDecoration: 'none',
-                fontSize: { xs: '1rem', md: '1.5rem' }, // Tamanho da fonte ajustado
+                fontSize: { xs: '1rem', md: '1.5rem' },
               }}
             >
               OddLabs
@@ -98,19 +109,75 @@ function ResponsiveAppBar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
+                '& .MuiPaper-root': {
+                  backgroundColor: '#0a0f26',
+                  color: '#00ff99',
+                  boxShadow: '0 0 10px #00ff99',
+                },
               }}
             >
               {pages.map((page) => (
                 <Button 
                   key={page.menuName}  
-                  onClick={() => {
-                    handleItemClick(page.route);
-                  }}
+                  onClick={() => handleItemClick(page.route)}
                   sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
                 >
                   {page.menuName}
                 </Button>
               ))}
+              <Button 
+                onClick={handleOpenGeneratorsMenu}
+                sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
+              >
+                Token
+              </Button>
+              <Menu
+                id="menu-generators"
+                anchorEl={anchorElGenerators}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElGenerators)}
+                onClose={handleCloseGeneratorsMenu}
+                sx={{
+                  '& .MuiPaper-root': {
+                    backgroundColor: '#0a0f26',
+                    color: '#00ff99',
+                    boxShadow: '0 0 10px #00ff99',
+                  },
+                }}
+              >
+                <MenuItem 
+                  onClick={() => handleItemClick('/generate-erc20')} 
+                  sx={{ 
+                    fontFamily: 'Orbitron',
+                    '&:hover': {
+                      backgroundColor: '#00ff99',
+                      color: '#0a0f26',
+                    }
+                  }}
+                >
+                  ERC20 Generator
+                </MenuItem>
+                <MenuItem 
+                  onClick={() => handleItemClick('/generate-erc721')} 
+                  sx={{ 
+                    fontFamily: 'Orbitron',
+                    '&:hover': {
+                      backgroundColor: '#00ff99',
+                      color: '#0a0f26',
+                    }
+                  }}
+                >
+                  ERC721 Generator
+                </MenuItem>
+              </Menu>
             </Menu>
           </Box>
 
@@ -120,13 +187,64 @@ function ResponsiveAppBar() {
               <Button 
                 key={page.menuName} 
                 sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
-                onClick={() => {
-                  handleItemClick(page.route);
-                }}
+                onClick={() => handleItemClick(page.route)}
               >
                 {page.menuName}
               </Button>
             ))}
+            <Button 
+              onClick={handleOpenGeneratorsMenu}
+              sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
+            >
+              Token
+            </Button>
+            <Menu
+              id="menu-generators"
+              anchorEl={anchorElGenerators}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElGenerators)}
+              onClose={handleCloseGeneratorsMenu}
+              sx={{
+                '& .MuiPaper-root': {
+                  backgroundColor: '#0a0f26',
+                  color: '#00ff99',
+                  boxShadow: '0 0 10px #00ff99',
+                },
+              }}
+            >
+              <MenuItem 
+                onClick={() => handleItemClick('/generate-erc20')} 
+                sx={{ 
+                  fontFamily: 'Orbitron',
+                  '&:hover': {
+                    backgroundColor: '#00ff99',
+                    color: '#0a0f26',
+                  }
+                }}
+              >
+                ERC20 Generator
+              </MenuItem>
+              <MenuItem 
+                onClick={() => handleItemClick('/generate-erc721')} 
+                sx={{ 
+                  fontFamily: 'Orbitron',
+                  '&:hover': {
+                    backgroundColor: '#00ff99',
+                    color: '#0a0f26',
+                  }
+                }}
+              >
+                ERC721 Generator
+              </MenuItem>
+            </Menu>
           </Box>
 
           {/* Wallet component displayed on all screen sizes */}

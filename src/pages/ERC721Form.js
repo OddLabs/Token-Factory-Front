@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import Web3 from 'web3';
-import { tokenFactoryERC20ABI, tokenFactoryERC20Address } from '../config/TokenFactoryERC20Config';
+import { tokenFactoryERC721ABI, tokenFactoryERC721Address } from '../config/TokenFactoryERC721Config';
 import { FormControl, Box, FormHelperText, Input, InputLabel, Alert, Typography, Paper } from '@mui/material';
-import erc20FormSupportingImage from '../images/erc20-form-supporting-image.webp';
+import erc721FormSupportingImage from '../images/erc721-form-supporting-image.webp';
 import '@fontsource/orbitron';
 import GeneratorFormLoadingButton from '../components/GeneratorFormLoadingButton'
 
-function ERC20Form() {
+function ERC721Form() {
   const [tokenName, setTokenName] = useState('');
   const [tokenSymbol, setTokenSymbol] = useState('');
-  const [initialSupply, setInitialSupply] = useState(0);
   const [message, setMessage] = useState('');
   const [contractAddress, setContractAddress] = useState('');
   const [transactionHash, setTransactionHash] = useState('');
@@ -23,7 +22,6 @@ function ERC20Form() {
     const cleanFields = () => {
       setTokenName('');
       setTokenSymbol('');
-      setInitialSupply('');
     };
 
     try {
@@ -41,11 +39,11 @@ function ERC20Form() {
       const accounts = await web3.eth.getAccounts();
       const account = accounts[0];
 
-      const tokenFactoryContract = new web3.eth.Contract(tokenFactoryERC20ABI, tokenFactoryERC20Address);
+      const tokenFactoryContract = new web3.eth.Contract(tokenFactoryERC721ABI, tokenFactoryERC721Address);
 
       const sendTransaction = tokenFactoryContract.methods
-        .createToken(tokenName, tokenSymbol, initialSupply)
-        .send({ from: account, value: web3.utils.toWei('1', 'wei')});
+        .createToken(tokenName, tokenSymbol)
+        .send({ from: account, value: web3.utils.toWei('1', 'wei') });
 
       sendTransaction.on('transactionHash', function(hash) {
         setTransactionHash(hash);
@@ -112,7 +110,7 @@ function ERC20Form() {
             }}
             gutterBottom
           >
-            Create Your ERC-20 Token
+            Create Your ERC-721 Token
           </Typography>
           <form onSubmit={handleSubmit}>
             <FormControl fullWidth variant="outlined" margin="normal">
@@ -171,34 +169,6 @@ function ERC20Form() {
               </FormHelperText>
             </FormControl>
 
-            <FormControl fullWidth variant="outlined" margin="normal">
-              <InputLabel htmlFor="initialSupply" sx={{ fontFamily: 'Orbitron, sans-serif', color: '#00ff99', fontSize: { xs: '0.875rem', md: '1rem' } }}>
-                Initial Supply
-              </InputLabel>
-              <Input
-                id="initialSupply"
-                value={initialSupply}
-                onChange={(e) => setInitialSupply(e.target.value)}
-                sx={{
-                  fontFamily: 'Orbitron, sans-serif',
-                  color: '#ffffff',
-                  bgcolor: '#0a0f26',
-                  borderRadius: 1,
-                  padding: '10px',
-                  '&::before': {
-                    borderColor: '#00ff99'
-                  },
-                  '&::after': {
-                    borderColor: '#00ff99'
-                  },
-                  fontSize: { xs: '0.875rem', md: '1rem' }
-                }}
-              />
-              <FormHelperText sx={{ fontFamily: 'Orbitron, sans-serif', color: '#ffffff', fontSize: { xs: '0.75rem', md: '0.875rem' } }}>
-                Write initial supply here
-              </FormHelperText>
-            </FormControl>
-
             <GeneratorFormLoadingButton
               loading={loading}
               disabled={disabledButton}
@@ -236,11 +206,11 @@ function ERC20Form() {
           alignItems="center"
           sx={{ marginLeft: { xs: 0, md: 3 }, marginTop: { xs: 3, md: 0 }, height: 'auto', padding: { xs: '10px', md: '20px 0' } }}
         >
-          <img src={erc20FormSupportingImage} alt="Token Creation" style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '8px', filter: 'drop-shadow(0 0 10px #00ff99)' }} />
+          <img src={erc721FormSupportingImage} alt="Token Creation" style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '8px', filter: 'drop-shadow(0 0 10px #00ff99)' }} />
         </Box>
       </Paper>
     </Box>
   );
 }
 
-export default ERC20Form;
+export default ERC721Form;
