@@ -6,6 +6,7 @@ function Home() {
   return (
     <Box 
       sx={{ 
+        minWidth: {md: '100vw'},
         minHeight: '100vh', 
         bgcolor: '#0a0f26',
         color: '#00ff99',
