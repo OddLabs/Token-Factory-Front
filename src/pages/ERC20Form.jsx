@@ -88,7 +88,7 @@ function ERC20Form() {
       <Paper elevation={6} sx={{
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
-        width: { xs: '100%', md: '80%' },
+        width: { xs: '80%', md: '80%', sm: '80%' },
         padding: { xs: 2, md: 4 },
         borderRadius: 2,
         bgcolor: '#1a1a1a',

@@ -38,10 +38,9 @@ function ResponsiveAppBar() {
   }
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#0a0f26', boxShadow: '0 0 10px #00ff99', minHeight: 80 }}>
+    <AppBar position="static" sx={{ backgroundColor: '#0a0f26', boxShadow: '0 0 10px #00ff99', minHeight: 80}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ minHeight: 80, justifyContent: 'space-between' }}>
-          {/* Logo and OddLabs text together */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box
               sx={{
