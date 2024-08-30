@@ -153,7 +153,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 <MenuItem 
-                  onClick={() => handleItemClick('/generate-erc20')} 
+                  onClick={() => handleItemClick('/erc20')} 
                   sx={{ 
                     fontFamily: 'Orbitron',
                     '&:hover': {
@@ -162,10 +162,10 @@ function ResponsiveAppBar() {
                     }
                   }}
                 >
-                  ERC20 Generator
+                  ERC20
                 </MenuItem>
                 <MenuItem 
-                  onClick={() => handleItemClick('/generate-erc721')} 
+                  onClick={() => handleItemClick('/erc721')} 
                   sx={{ 
                     fontFamily: 'Orbitron',
                     '&:hover': {
@@ -174,7 +174,7 @@ function ResponsiveAppBar() {
                     }
                   }}
                 >
-                  ERC721 Generator
+                  ERC721
                 </MenuItem>
               </Menu>
             </Menu>
@@ -220,7 +220,7 @@ function ResponsiveAppBar() {
               }}
             >
               <MenuItem 
-                onClick={() => handleItemClick('/generate-erc20')} 
+                onClick={() => handleItemClick('/erc20')} 
                 sx={{ 
                   fontFamily: 'Orbitron',
                   '&:hover': {
@@ -229,10 +229,10 @@ function ResponsiveAppBar() {
                   }
                 }}
               >
-                ERC20 Generator
+                ERC20
               </MenuItem>
               <MenuItem 
-                onClick={() => handleItemClick('/generate-erc721')} 
+                onClick={() => handleItemClick('/erc721')} 
                 sx={{ 
                   fontFamily: 'Orbitron',
                   '&:hover': {
@@ -241,7 +241,7 @@ function ResponsiveAppBar() {
                   }
                 }}
               >
-                ERC721 Generator
+                ERC721
               </MenuItem>
             </Menu>
           </Box>

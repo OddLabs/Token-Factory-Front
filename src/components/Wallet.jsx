@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import '@fontsource/orbitron'; // Importando a fonte Orbitron
+import '@fontsource/orbitron';
 
 function Wallet() {
   const [account, setAccount] = useState('');
@@ -36,12 +36,12 @@ function Wallet() {
         variant="body1" 
         sx={{ 
           fontFamily: 'Orbitron, sans-serif', 
-          color: '#00ff99',  // Cor neon para o texto
-          textShadow: '0 0 5px #00ff99',  // Efeito de sombra neon
+          color: '#00ff99', 
+          textShadow: '0 0 5px #00ff99',
           marginLeft: 2,
-          textOverflow: 'ellipsis', // Trunca o texto apenas se necessário
-          whiteSpace: 'nowrap', // Evita quebra de linha
-          overflow: 'hidden', // Oculta o excesso de texto
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap', 
+          overflow: 'hidden', 
         }}
       >
         Connected: {account ? `${account.substring(0, 6)}...${account.substring(account.length - 4)}` : 'Not Connected'}
