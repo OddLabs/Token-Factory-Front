@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Container} from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import HideableForm from '../components/HideableForm';
 import ERC20Form from '../components/ERC20Form';
@@ -70,13 +70,68 @@ function ERC20() {
           <Typography 
             variant="body1"
             sx={{ 
-              fontFamily: 'Roboto, sans-serif',
+              fontFamily: 'Orbitron, sans-serif',  // Usando Orbitron
               fontSize: '1.2rem',
               mb: 4,
               color: '#ffffff',
             }}
           >
-            ERC20 is a standard for creating tokens on the Ethereum blockchain. It's used for a wide range of applications including ICOs, decentralized finance (DeFi), and more. Below, you can generate your own ERC20 token by filling out the form with the necessary details. Click the button to start the process.
+            The ERC20 standard is a widely adopted framework for creating fungible tokens on the Ethereum blockchain. Fungible tokens are assets that are interchangeable with each other, just like traditional currencies—each unit is identical in value and functionality to another. ERC20 tokens can represent virtually anything, from financial assets like stablecoins and stocks to utility tokens used within decentralized applications (DApps).
+          </Typography>
+
+          <Typography 
+            variant="body1"
+            sx={{ 
+              fontFamily: 'Orbitron, sans-serif',  // Usando Orbitron
+              fontSize: '1.2rem',
+              mb: 4,
+              color: '#ffffff',
+            }}
+          >
+            ERC20 defines a common set of rules that all tokens must adhere to, ensuring seamless interaction between different tokens and smart contracts on the Ethereum network. These rules include how tokens are transferred between addresses, how users can access data about a token, and the total supply of tokens in existence. By adhering to these standards, developers can create tokens that integrate easily with existing wallets, exchanges, and other decentralized services.
+          </Typography>
+
+          <Typography 
+            variant="body1"
+            sx={{ 
+              fontFamily: 'Orbitron, sans-serif',  // Usando Orbitron
+              fontSize: '1.2rem',
+              mb: 4,
+              color: '#ffffff',
+            }}
+          >
+            ERC20 tokens have many use cases, including:
+          </Typography>
+
+          <Typography 
+            component="ul" 
+            variant="body1" 
+            sx={{ 
+              fontFamily: 'Orbitron, sans-serif',  // Usando Orbitron
+              fontSize: '1.2rem',
+              color: '#ffffff',
+              textAlign: 'left',
+              paddingLeft: { xs: 2, sm: 3 },
+              marginBottom: 4,
+            }}
+          >
+            <li>Initial Coin Offerings (ICOs): Raising capital by issuing tokens that investors can buy and sell.</li>
+            <li>Decentralized Finance (DeFi): Representing assets, facilitating lending and borrowing, or providing liquidity in decentralized exchanges.</li>
+            <li>Stablecoins: Tokens like USDT and DAI, pegged to stable assets like the US dollar, used to facilitate transactions with minimal volatility.</li>
+            <li>Gaming and Virtual Goods: In-game currency that allows players to buy, sell, and trade virtual goods securely.</li>
+            <li>Loyalty Programs and Rewards: Creating reward systems where customers can earn and redeem tokens for products or services.</li>
+          </Typography>
+
+          <Typography 
+            variant="body1"
+            sx={{ 
+              fontFamily: 'Orbitron, sans-serif',  // Usando Orbitron
+              fontSize: '1.2rem',
+              mb: 4,
+              color: '#ffffff',
+            }}
+          >
+            With the ERC20 standard, launching your own token is straightforward. By filling out the form below with the necessary details, you can generate your own ERC20 token in just a few steps. Whether you're creating a new cryptocurrency, a reward token, or an in-game asset, this tool allows you to enter the world of decentralized finance with ease. Click the button below to begin the process.
           </Typography>
         </motion.div>
 

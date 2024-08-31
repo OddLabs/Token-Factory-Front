@@ -49,7 +49,7 @@ function App() {
             color: '#ffffff',
           }}
         >
-          © {new Date().getFullYear()} Your Company Name. All rights reserved.
+          © {new Date().getFullYear()} Odd Labs. All rights reserved.
         </Box>
       </Box>
     </BrowserRouter>
