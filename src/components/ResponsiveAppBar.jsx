@@ -7,11 +7,15 @@ import Wallet from './Wallet';
 import logo from '../images/logo.webp';
 import '@fontsource/orbitron';
 
-const pages = [{ menuName: 'Home', route: '/' }];
+const pages = [
+  { menuName: 'Home', route: '/' },
+  { menuName: 'About Us', route: '/about' },
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElGenerators, setAnchorElGenerators] = React.useState(null);
+  const [anchorElApi, setAnchorElApi] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -29,38 +33,28 @@ function ResponsiveAppBar() {
     setAnchorElGenerators(null);
   };
 
+  const handleOpenApiMenu = (event) => {
+    setAnchorElApi(event.currentTarget);
+  };
+
+  const handleCloseApiMenu = () => {
+    setAnchorElApi(null);
+  };
+
   const navigate = useNavigate();
 
   const handleItemClick = (route) => {
     navigate(route);
     handleCloseNavMenu();
     handleCloseGeneratorsMenu();
-  }
+    handleCloseApiMenu();
+  };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#0a0f26', boxShadow: '0 0 10px #00ff99', minHeight: 80}}>
+    <AppBar position="static" sx={{ backgroundColor: '#0a0f26', boxShadow: '0 0 10px #00ff99', minHeight: 80 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ minHeight: 80, justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                mr: 1,
-                height: 80,
-                background: 'linear-gradient(135deg, #0a0f26 0%, #00ff99 100%)',
-                padding: '10px',
-                borderRadius: '8px',
-              }}
-            >
-              <Box
-                component="img"
-                src={logo} 
-                alt="OddLabs Logo"
-                sx={{
-                  height: '100%',
-                }}
-              />
-            </Box>
 
             <Typography
               variant="h6"
@@ -116,19 +110,19 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <Button 
-                  key={page.menuName}  
+                <Button
+                  key={page.menuName}
                   onClick={() => handleItemClick(page.route)}
                   sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
                 >
                   {page.menuName}
                 </Button>
               ))}
-              <Button 
+              <Button
                 onClick={handleOpenGeneratorsMenu}
                 sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
               >
-                Token
+                GUI TOOLS
               </Button>
               <Menu
                 id="menu-generators"
@@ -152,9 +146,9 @@ function ResponsiveAppBar() {
                   },
                 }}
               >
-                <MenuItem 
-                  onClick={() => handleItemClick('/erc20')} 
-                  sx={{ 
+                <MenuItem
+                  onClick={() => handleItemClick('/erc20')}
+                  sx={{
                     fontFamily: 'Orbitron',
                     '&:hover': {
                       backgroundColor: '#00ff99',
@@ -162,11 +156,11 @@ function ResponsiveAppBar() {
                     }
                   }}
                 >
-                  ERC20
+                  ERC-20 Generator
                 </MenuItem>
-                <MenuItem 
-                  onClick={() => handleItemClick('/erc721')} 
-                  sx={{ 
+                <MenuItem
+                  onClick={() => handleItemClick('/erc721')}
+                  sx={{
                     fontFamily: 'Orbitron',
                     '&:hover': {
                       backgroundColor: '#00ff99',
@@ -174,7 +168,73 @@ function ResponsiveAppBar() {
                     }
                   }}
                 >
-                  ERC721
+                  ERC-721 Generator
+                </MenuItem>
+              </Menu>
+
+              <Button
+                onClick={handleOpenApiMenu}
+                sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
+              >
+                API
+              </Button>
+              <Menu
+                id="menu-api"
+                anchorEl={anchorElApi}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElApi)}
+                onClose={handleCloseApiMenu}
+                sx={{
+                  '& .MuiPaper-root': {
+                    backgroundColor: '#0a0f26',
+                    color: '#00ff99',
+                    boxShadow: '0 0 10px #00ff99',
+                  },
+                }}
+              >
+                <MenuItem
+                  onClick={() => handleItemClick('/developers-api/evm-operations')}
+                  sx={{
+                    fontFamily: 'Orbitron',
+                    '&:hover': {
+                      backgroundColor: '#00ff99',
+                      color: '#0a0f26',
+                    }
+                  }}
+                >
+                  EVM Operations
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleItemClick('/developers-api/signed-transactions')}
+                  sx={{
+                    fontFamily: 'Orbitron',
+                    '&:hover': {
+                      backgroundColor: '#00ff99',
+                      color: '#0a0f26',
+                    }
+                  }}
+                >
+                  Signed Transactions
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleItemClick('/developers-api/contract-interactions')}
+                  sx={{
+                    fontFamily: 'Orbitron',
+                    '&:hover': {
+                      backgroundColor: '#00ff99',
+                      color: '#0a0f26',
+                    }
+                  }}
+                >
+                  Contract Interactions
                 </MenuItem>
               </Menu>
             </Menu>
@@ -183,19 +243,19 @@ function ResponsiveAppBar() {
           {/* Menu for larger screens */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1, justifyContent: 'center' }}>
             {pages.map((page) => (
-              <Button 
-                key={page.menuName} 
+              <Button
+                key={page.menuName}
                 sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
                 onClick={() => handleItemClick(page.route)}
               >
                 {page.menuName}
               </Button>
             ))}
-            <Button 
+            <Button
               onClick={handleOpenGeneratorsMenu}
               sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
             >
-              Token
+              GUI TOOLS
             </Button>
             <Menu
               id="menu-generators"
@@ -219,9 +279,9 @@ function ResponsiveAppBar() {
                 },
               }}
             >
-              <MenuItem 
-                onClick={() => handleItemClick('/erc20')} 
-                sx={{ 
+              <MenuItem
+                onClick={() => handleItemClick('/erc20')}
+                sx={{
                   fontFamily: 'Orbitron',
                   '&:hover': {
                     backgroundColor: '#00ff99',
@@ -229,11 +289,11 @@ function ResponsiveAppBar() {
                   }
                 }}
               >
-                ERC20
+                ERC-20 Generator
               </MenuItem>
-              <MenuItem 
-                onClick={() => handleItemClick('/erc721')} 
-                sx={{ 
+              <MenuItem
+                onClick={() => handleItemClick('/erc721')}
+                sx={{
                   fontFamily: 'Orbitron',
                   '&:hover': {
                     backgroundColor: '#00ff99',
@@ -241,7 +301,73 @@ function ResponsiveAppBar() {
                   }
                 }}
               >
-                ERC721
+                ERC-721 Generator
+              </MenuItem>
+            </Menu>
+
+            <Button
+              onClick={handleOpenApiMenu}
+              sx={{ color: '#00ff99', fontFamily: 'Orbitron' }}
+            >
+              API
+            </Button>
+            <Menu
+              id="menu-api"
+              anchorEl={anchorElApi}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+              }}
+              open={Boolean(anchorElApi)}
+              onClose={handleCloseApiMenu}
+              sx={{
+                '& .MuiPaper-root': {
+                  backgroundColor: '#0a0f26',
+                  color: '#00ff99',
+                  boxShadow: '0 0 10px #00ff99',
+                },
+              }}
+            >
+              <MenuItem
+                onClick={() => handleItemClick('/evm-operations')}
+                sx={{
+                  fontFamily: 'Orbitron',
+                  '&:hover': {
+                    backgroundColor: '#00ff99',
+                    color: '#0a0f26',
+                  }
+                }}
+              >
+                EVM Operations
+              </MenuItem>
+              <MenuItem
+                onClick={() => handleItemClick('/signed-transactions')}
+                sx={{
+                  fontFamily: 'Orbitron',
+                  '&:hover': {
+                    backgroundColor: '#00ff99',
+                    color: '#0a0f26',
+                  }
+                }}
+              >
+                Signed Transactions
+              </MenuItem>
+              <MenuItem
+                onClick={() => handleItemClick('/contract-interactions')}
+                sx={{
+                  fontFamily: 'Orbitron',
+                  '&:hover': {
+                    backgroundColor: '#00ff99',
+                    color: '#0a0f26',
+                  }
+                }}
+              >
+                Contract Interactions
               </MenuItem>
             </Menu>
           </Box>

@@ -9,6 +9,9 @@ import Contact from './pages/Contact';
 import ERC20Page from './pages/ERC20';
 import ERC721Page from './pages/ERC721';
 import NotFound from './pages/NotFound';
+import EVMOperations from './pages/EvmOperations';
+import SignedTransactions from './pages/SignedTransactions';
+import ContractInteractions from './pages/ContractInteractions';
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
             <Route path="/erc721" element={<ERC721Page />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/developers-api/evm-operations" element={<EVMOperations/>} />
+            <Route path="/developers-api/signed-transactions" element={<SignedTransactions/>} />
+            <Route path="/developers-api/contract-interactions" element={<ContractInteractions/>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Box>

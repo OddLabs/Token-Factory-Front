@@ -106,7 +106,7 @@ function ERC20Form() {
           }}
           gutterBottom
         >
-          Create Your ERC-20 Token
+          ERC-20 Token
         </Typography>
         <form onSubmit={handleSubmit}>
           <FormControl fullWidth variant="outlined" margin="normal">

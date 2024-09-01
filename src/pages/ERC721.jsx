@@ -24,13 +24,13 @@ function ERC721() {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.2 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 3 }}
         >
           <Box
             component="img"
             src={erc721SupportingImage}
-            alt="ERC721 Supporting Image"
+            alt="ERC-721 Supporting Image"
             sx={{ 
               width: '100%',
               maxWidth: '600px',
@@ -58,7 +58,7 @@ function ERC721() {
               fontSize: { xs: '2rem', sm: '3rem', md: '4rem' },
             }}
           >
-            Create Your ERC721 Token
+            Your ERC-721 Token
           </Typography>
         </motion.div>
 
@@ -70,44 +70,44 @@ function ERC721() {
           <Typography 
             variant="body1"
             sx={{ 
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: 'Roboto, sans-serif',
               fontSize: '1.2rem',
               mb: 4,
               color: '#ffffff',
             }}
           >
-            ERC721 is a standard for non-fungible tokens (NFTs) on the Ethereum blockchain. Unlike ERC20 tokens, which are interchangeable, each ERC721 token is unique and can represent individual ownership of digital or physical assets. This uniqueness makes ERC721 ideal for digital art, collectibles, real estate, and more.
+            ERC-721 is a standard for creating unique, non-fungible tokens (NFTs) on the Ethereum blockchain. Unlike fungible tokens like ERC20, each ERC-721 token is distinct and can represent ownership of a specific digital or physical asset.
           </Typography>
 
           <Typography 
             variant="body1"
             sx={{ 
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: 'Roboto, sans-serif',
               fontSize: '1.2rem',
               mb: 4,
               color: '#ffffff',
             }}
           >
-            ERC721 tokens are widely used in the growing NFT market, where they enable creators and collectors to tokenize and trade assets with verified ownership and provenance. Each token is stored on the blockchain with a unique identifier, ensuring that no two ERC721 tokens are the same.
+            With our ERC-721 generator, you can easily create your own NFT by defining the necessary details such as name, symbol, and unique attributes. This tool is perfect for artists, developers, and businesses looking to tokenize digital art, collectibles, real estate, and more.
           </Typography>
 
           <Typography 
             variant="body1"
             sx={{ 
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: 'Roboto, sans-serif',
               fontSize: '1.2rem',
               mb: 4,
               color: '#ffffff',
             }}
           >
-            Common use cases for ERC721 tokens include:
+            Common use cases for ERC-721 tokens include:
           </Typography>
 
           <Typography 
             component="ul" 
             variant="body1" 
             sx={{ 
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: 'Roboto, sans-serif',
               fontSize: '1.2rem',
               color: '#ffffff',
               textAlign: 'left',
@@ -115,25 +115,24 @@ function ERC721() {
               marginBottom: 4,
             }}
           >
-            <li>Digital Art: Artists can tokenize their creations, providing verifiable ownership and enabling sales in online marketplaces.</li>
-            <li>Collectibles: Trading cards, virtual pets, and other digital collectibles use ERC721 to maintain scarcity and value.</li>
-            <li>Real Estate: Representing ownership of physical properties or virtual land in digital worlds.</li>
-            <li>Gaming Assets: Unique in-game items, such as weapons or skins, that players can own, trade, and sell.</li>
-            <li>Identity and Certification: Issuing certificates or identity documents that are verifiably unique and tamper-proof.</li>
+            <li>Digital Art: Tokenize and sell unique pieces of art with verifiable ownership.</li>
+            <li>Collectibles: Create and trade unique digital items, such as trading cards or virtual pets.</li>
+            <li>Real Estate: Represent ownership of physical or virtual properties on the blockchain.</li>
+            <li>Gaming Assets: Issue unique in-game items that players can own and trade.</li>
+            <li>Identity and Certification: Issue tamper-proof certificates or identity tokens.</li>
           </Typography>
 
           <Typography 
             variant="body1"
             sx={{ 
-              fontFamily: 'Orbitron, sans-serif',
+              fontFamily: 'Roboto, sans-serif',
               fontSize: '1.2rem',
               mb: 4,
               color: '#ffffff',
             }}
           >
-            With the ERC721 standard, you can easily create your own NFT by filling out the form below with the necessary details. Whether you're an artist, a developer, or a business, this tool allows you to enter the world of non-fungible tokens and start tokenizing unique assets today. Click the button below to begin the process.
+            To get started, simply fill out the form below with the required information. Once you confirm the transaction, your NFT will be live on the Ethereum blockchain. If you have specific needs or custom requirements, feel free to contact us for a more tailored solution.
           </Typography>
-
         </motion.div>
         
 

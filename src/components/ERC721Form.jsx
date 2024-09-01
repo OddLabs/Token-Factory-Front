@@ -106,7 +106,7 @@ function ERC721Form() {
           }}
           gutterBottom
         >
-          Create Your ERC-721 Token
+          ERC-721 Token
         </Typography>
         <form onSubmit={handleSubmit}>
           <FormControl fullWidth variant="outlined" margin="normal">
